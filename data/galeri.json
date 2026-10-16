@@ -1,8 +1,37 @@
 [
-  {"id": "g1", "src": "img/gerbang.jpg", "caption": "Gerbang badik Selamat Datang di Desa Tanammawang"},
-  {"id": "g2", "src": "img/musyawarah.jpg", "caption": "Kegiatan bersama di balai desa"},
-  {"id": "g3", "src": "img/irigasi.jpg", "caption": "Peninjauan pompa air untuk pengairan sawah"},
-  {"id": "g4", "src": "img/silaturahmi.jpg", "caption": "Silaturahmi bersama Babinsa dan Bhabinkamtibmas"},
-  {"id": "g5", "src": "img/kantor.jpg", "caption": "Kantor desa"},
-  {"id": "g6", "src": "img/gerbang2.jpg", "caption": "Gerbang desa dari arah dalam"}
+  {
+    "id": "g1792159641285",
+    "src": "img/galeri/1792159638165.jpg",
+    "caption": "Kegiatan Musyawarah Desa (Musdes) Rencana Kerja Pemerintah Desa (RKPDes) Tanammawang Tahun Anggaran 2027 dan penyusunan Daftar Usulan RKPDes"
+  },
+  {
+    "id": "g1",
+    "src": "img/gerbang.jpg",
+    "caption": "Gerbang badik Selamat Datang di Desa Tanammawang"
+  },
+  {
+    "id": "g2",
+    "src": "img/musyawarah.jpg",
+    "caption": "Kegiatan bersama di balai desa"
+  },
+  {
+    "id": "g3",
+    "src": "img/irigasi.jpg",
+    "caption": "Peninjauan pompa air untuk pengairan sawah"
+  },
+  {
+    "id": "g4",
+    "src": "img/silaturahmi.jpg",
+    "caption": "Silaturahmi bersama Babinsa dan Bhabinkamtibmas"
+  },
+  {
+    "id": "g5",
+    "src": "img/kantor.jpg",
+    "caption": "Kantor desa"
+  },
+  {
+    "id": "g6",
+    "src": "img/gerbang2.jpg",
+    "caption": "Gerbang desa dari arah dalam"
+  }
 ]

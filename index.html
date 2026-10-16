@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/logo-jeneponto.png">
+<title>Desa Tanammawang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Website resmi Desa Tanammawang, Kecamatan Bontoramba, Kabupaten Jeneponto, Sulawesi Selatan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: satu halaman dengan beberapa "halaman" (view) yang dibuka lewat menu; beranda memakai gerbang desa, halaman lain memakai pita judul ringkas. Warna dari gerbang: biru, cokelat gagang badik, kuning tugu. */
+:root{
+  --bg:#f6f7f4;
+  --surface:#ffffff;
+  --sunk:#eceee8;
+  --fg:#1d2420;
+  --muted:#5b6560;
+  --line:#d9ddd5;
+  --blue:#1f6fae;
+  --blue-ink:#1a5c91;
+  --brown:#8a5640;
+  --gold:#e3c22a;
+  --green:#3f7d4e;
+  --danger:#b3261e;
+  --on-blue:#ffffff;
+  --on-dark:#f4f6f2;
+  --band:#163a57;
+  --hero-shade:rgba(10,22,32,.62);
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --s-1:.8125rem; --s0:1rem; --s1:1.125rem; --s2:1.5rem; --s3:2.125rem; --s4:clamp(2.4rem,6vw,4.4rem);
+  --wrap:1160px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121614;--surface:#1a1f1c;--sunk:#0e1210;--fg:#e8ece6;--muted:#a3ada7;--line:#2c3430;
+  --blue:#6fb0e6;--blue-ink:#8cc2ee;--brown:#c99378;--gold:#e8cb45;--green:#7cbf8b;--danger:#f2958d;--on-blue:#0d1a24;--band:#0f2a40;--hero-shade:rgba(5,10,14,.7);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614;--surface:#1a1f1c;--sunk:#0e1210;--fg:#e8ece6;--muted:#a3ada7;--line:#2c3430;
+  --blue:#6fb0e6;--blue-ink:#8cc2ee;--brown:#c99378;--gold:#e8cb45;--green:#7cbf8b;--danger:#f2958d;--on-blue:#0d1a24;--band:#0f2a40;--hero-shade:rgba(5,10,14,.7);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--s0);line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+a{color:var(--blue-ink)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:var(--s3);font-weight:800;font-stretch:88%;letter-spacing:-.01em}
+h3{font-size:var(--s1);font-weight:700}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.band.alt{background:var(--sunk)}
+.eyebrow{font-family:var(--f-display);font-size:var(--s-1);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+.head{display:grid;gap:.6rem;margin-bottom:2rem;max-width:62ch}
+.head p{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+.src{font-size:var(--s-1);color:var(--muted);margin-top:.9rem}
+.btn{font:inherit;font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--blue);color:var(--blue-ink)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.btn.primary:hover{color:var(--on-blue);filter:brightness(1.08)}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:var(--surface)}
+.btn:disabled{opacity:.55;cursor:wait}
+
+/* Header & menu */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:.75rem;min-height:64px;position:relative}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--fg);min-width:0;margin-right:auto}
+.brand img{width:40px;height:40px;object-fit:contain;flex:none}
+.brand b{display:block;font-family:var(--f-display);font-size:1.05rem;font-weight:800;font-stretch:90%;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+.brand small{display:block;font-size:.72rem;color:var(--muted);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;align-items:center;gap:.1rem}
+.nav>a,.dd-btn{font:inherit;font-size:.875rem;font-weight:600;color:var(--fg);text-decoration:none;padding:.5rem .65rem;border-radius:6px;background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:.3rem;white-space:nowrap}
+.nav>a:hover,.dd-btn:hover{background:var(--sunk);color:var(--blue-ink)}
+.nav>a.active,.dd.active>.dd-btn{color:var(--blue-ink);box-shadow:inset 0 -3px 0 var(--gold)}
+.dd{position:relative}
+.dd-btn::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);margin-left:.15rem}
+.dd-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:240px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.14);padding:.4rem;display:none;z-index:55}
+.dd.open .dd-menu{display:grid}
+.dd-menu a{display:block;padding:.55rem .75rem;border-radius:5px;color:var(--fg);text-decoration:none;font-size:.9rem;font-weight:500}
+.dd-menu a:hover,.dd-menu a.active{background:var(--sunk);color:var(--blue-ink)}
+.dd-menu a small{display:block;color:var(--muted);font-size:.75rem}
+.tools{display:flex;align-items:center;gap:.4rem}
+.admin-btn{font:inherit;font-size:.8rem;font-weight:700;padding:.4rem .75rem;border-radius:999px;border:1px solid var(--line);background:var(--sunk);color:var(--fg);cursor:pointer;white-space:nowrap}
+.admin-btn:hover{border-color:var(--blue);color:var(--blue-ink)}
+body.is-admin .admin-btn{background:var(--gold);border-color:var(--gold);color:#2a2300}
+.brand>span{min-width:0}
+@media (max-width:520px){.brand small{display:none}.brand b{font-size:.95rem}.lbl-long{display:none}.brand img{width:34px;height:34px}}
+.menu-btn{display:none;font:inherit;font-weight:600;font-size:.875rem;background:var(--sunk);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:.45rem .8rem;cursor:pointer}
+@media (max-width:1060px){
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:.5rem max(16px,env(safe-area-inset-right,0px)) 1rem max(16px,env(safe-area-inset-left,0px));max-height:calc(100vh - 80px);overflow-y:auto;box-shadow:0 12px 24px rgba(0,0,0,.12)}
+  .nav.open{display:flex}
+  .nav>a,.dd-btn{padding:.75rem .5rem;width:100%;justify-content:space-between}
+  .nav>a.active,.dd.active>.dd-btn{box-shadow:inset 3px 0 0 var(--gold)}
+  .dd-menu{position:static;box-shadow:none;border:0;border-left:2px solid var(--line);border-radius:0;margin:0 0 .4rem .6rem;min-width:0;padding:.1rem 0 .1rem .4rem}
+}
+.adminbar{background:var(--gold);color:#2a2300;font-size:.85rem;font-weight:600}
+.adminbar .wrap{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding-block:.45rem;flex-wrap:wrap}
+.adminbar button{font:inherit;font-weight:700;background:#2a2300;color:#fff6c8;border:0;border-radius:5px;padding:.3rem .7rem;cursor:pointer}
+
+/* Views */
+.view[hidden]{display:none}
+.pagehead{position:relative;color:var(--on-dark);background:#16303f url("img/gerbang.jpg") center 40%/cover no-repeat}
+.pagehead::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,30,.88),rgba(8,20,30,.55))}
+.pagehead .wrap{position:relative;padding-block:clamp(2.2rem,5vw,3.4rem);display:grid;gap:.5rem}
+.pagehead .eyebrow{color:var(--gold)}
+.pagehead h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;font-stretch:80%;text-transform:uppercase}
+.pagehead p{color:#dfe6e3;max-width:60ch}
+.crumb{font-size:.8rem;color:#c9d3cf}
+.crumb a{color:#fff;text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+
+/* Hero */
+.hero{position:relative;color:var(--on-dark);background:#16303f url("img/gerbang.jpg") center 38%/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,var(--hero-shade) 70%)}
+.hero .wrap{position:relative;padding-block:clamp(7rem,20vw,12rem) clamp(2.5rem,6vw,4rem);display:grid;gap:1.1rem}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:var(--s4);font-weight:900;font-stretch:78%;text-transform:uppercase;letter-spacing:.005em;max-width:16ch}
+.hero p{max-width:52ch;font-size:var(--s1);color:#e6ebe8}
+.stripe{display:flex;height:8px}
+.stripe i{flex:1}
+.stripe i:nth-child(1),.stripe i:nth-child(5){background:#2f86c8}.stripe i:nth-child(2),.stripe i:nth-child(4){background:#8a5640}.stripe i:nth-child(3){background:#e3c22a}
+.facts{background:var(--surface);border-bottom:1px solid var(--line)}
+.facts dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0}
+.facts div{padding:1.3rem 1rem;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts dt{font-size:var(--s-1);color:var(--muted)}
+.facts dd{margin:0;font-family:var(--f-display);font-size:1.9rem;font-weight:800;font-stretch:85%;font-variant-numeric:tabular-nums;line-height:1.2}
+.facts dd span{font-size:1rem;font-weight:600;color:var(--muted);margin-left:.2rem}
+@media (max-width:700px){.facts dl{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div{padding-left:1rem}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* Beranda: jelajah */
+.explore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:860px){.explore{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:520px){.explore{grid-template-columns:minmax(0,1fr)}}
+.explore a{display:grid;gap:.35rem;padding:1.15rem 1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--fg);transition:border-color .15s,transform .15s}
+.explore a:hover{border-color:var(--blue);transform:translateY(-2px)}
+.explore b{font-family:var(--f-display);font-size:1.1rem;font-weight:800;font-stretch:90%}
+.explore span{color:var(--muted);font-size:.9rem}
+.explore em{font-style:normal;font-size:.82rem;font-weight:700;color:var(--blue-ink)}
+.rowhead{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+
+/* Sambutan */
+.greet{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);align-items:start}
+.greet figure{margin:0}
+.greet img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:4px;background:var(--sunk)}
+.greet figcaption{margin-top:.8rem}
+.greet figcaption b{display:block;font-family:var(--f-display);font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.greet figcaption span{color:var(--muted);font-size:.9rem}
+.greet .text{display:grid;gap:1rem;max-width:62ch}
+.greet blockquote{margin:0;font-family:var(--f-display);font-size:var(--s2);font-weight:700;font-stretch:92%;line-height:1.25;color:var(--blue-ink);border-left:4px solid var(--gold);padding-left:1rem}
+@media (max-width:760px){.greet{grid-template-columns:minmax(0,1fr)}.greet figure{max-width:300px}}
+
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem)}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.prose{display:grid;gap:1rem;max-width:62ch}
+.timeline{list-style:none;margin:0;padding:0;display:grid}
+.timeline li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1rem;padding:1rem 0;border-top:1px solid var(--line)}
+.timeline li:last-child{border-bottom:1px solid var(--line)}
+.timeline .yr{font-family:var(--f-display);font-weight:800;font-stretch:85%;font-size:1.1rem;font-variant-numeric:tabular-nums;color:var(--brown)}
+.timeline b{display:block}
+.timeline span{color:var(--muted);font-size:.92rem}
+.timeline li.now .yr{color:var(--blue-ink)}
+
+/* Wilayah */
+.geo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.5rem,4vw,3rem);align-items:start}
+@media (max-width:860px){.geo{grid-template-columns:minmax(0,1fr)}}
+.compass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:440px}
+.compass div{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:.7rem .75rem;font-size:.9rem;min-width:0}
+.compass small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.compass .n{grid-column:2}.compass .w{grid-column:1;grid-row:2}.compass .c{grid-column:2;grid-row:2;background:var(--blue);border-color:var(--blue);color:var(--on-blue);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--f-display);font-stretch:85%;text-transform:uppercase;letter-spacing:.03em}
+.compass .e{grid-column:3;grid-row:2}.compass .s{grid-column:2;grid-row:3}
+.kv{display:grid;margin:1.5rem 0 0}
+.kv div{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:1rem;padding:.65rem 0;border-top:1px solid var(--line)}
+.kv dt{color:var(--muted);font-size:.92rem}
+.kv dd{margin:0;font-weight:600}
+.map{margin:0}
+.map img{width:100%;border-radius:4px;border:1px solid var(--line);background:#fff}
+.map figcaption{font-size:var(--s-1);color:var(--muted);margin-top:.5rem}
+.dusun{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.dusun span{font-size:.85rem;font-weight:600;padding:.35rem .75rem;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+
+/* Data */
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.tabs button{font:inherit;font-size:.9rem;font-weight:600;padding:.5rem .95rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(1rem,3vw,1.75rem)}
+.panel h3{margin-bottom:.35rem}
+.panel .lede{color:var(--muted);font-size:.92rem;margin-bottom:1.25rem;max-width:70ch}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.r,th.r{text-align:right}
+tfoot td{font-weight:700;border-bottom:0;border-top:2px solid var(--fg)}
+.bar{display:block;height:10px;border-radius:2px;background:var(--blue);min-width:2px}
+.bar.b{background:var(--brown)}.bar.g{background:var(--green)}
+.pyr{display:grid;gap:5px}
+.pyr .row{display:grid;grid-template-columns:minmax(0,1fr) 4.2rem minmax(0,1fr);align-items:center;gap:.6rem;font-size:.85rem;font-variant-numeric:tabular-nums}
+.pyr .l{display:flex;justify-content:flex-end;align-items:center;gap:.4rem}
+.pyr .p{display:flex;align-items:center;gap:.4rem}
+.pyr .age{text-align:center;font-weight:700;color:var(--muted)}
+.pyr .bl{height:16px;background:var(--blue);border-radius:2px 0 0 2px}
+.pyr .bp{height:16px;background:var(--brown);border-radius:0 2px 2px 0}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:.4rem;vertical-align:-1px}
+.hbars{display:grid;gap:.55rem}
+.hbars .row{display:grid;grid-template-columns:11rem minmax(0,1fr) 3.5rem;gap:.75rem;align-items:center;font-size:.9rem}
+.hbars .row b{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hbars .row{grid-template-columns:minmax(0,1fr) 3rem}.hbars .row .track{grid-column:1/-1;grid-row:2}.kv div{grid-template-columns:minmax(0,1fr);gap:.1rem}}
+.split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1.5rem}
+.split div{border:1px solid var(--line);border-radius:4px;padding:.9rem 1rem}
+.split small{display:block;color:var(--muted);font-size:var(--s-1)}
+.split b{font-family:var(--f-display);font-size:1.7rem;font-weight:800;font-stretch:85%;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.split{grid-template-columns:minmax(0,1fr)}}
+
+/* Lembaga */
+.lem{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(1.25rem,4vw,2.5rem);align-items:start}
+@media (max-width:860px){.lem{grid-template-columns:minmax(0,1fr)}}
+.subnav{display:grid;gap:.2rem;position:sticky;top:calc(80px + env(safe-area-inset-top,0px))}
+.subnav a{padding:.6rem .8rem;border-radius:6px;text-decoration:none;color:var(--fg);font-weight:600;font-size:.92rem;border-left:3px solid transparent}
+.subnav a:hover{background:var(--surface)}
+.subnav a.active{background:var(--surface);border-left-color:var(--gold);color:var(--blue-ink)}
+@media (max-width:860px){.subnav{position:static;display:flex;flex-wrap:wrap;gap:.4rem}.subnav a{border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;background:var(--surface);font-size:.85rem}.subnav a.active{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}}
+.lpanel[hidden]{display:none}
+.lpanel{display:grid;gap:1.25rem;min-width:0}
+.lpanel>p{color:var(--muted);max-width:65ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1.25rem}
+.card ul{list-style:none;margin:0;padding:0;display:grid}
+.card li{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-top:1px solid var(--line);font-size:.93rem}
+.card li:first-child{border-top:0}
+.card li span:first-child{color:var(--muted)}
+.card li span:last-child{font-weight:600;text-align:right}
+.kades{display:grid;grid-template-columns:200px minmax(0,1fr);gap:1.5rem;align-items:start}
+.kades img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:4px}
+@media (max-width:560px){.kades{grid-template-columns:minmax(0,1fr)}.kades img{max-width:220px}}
+.factrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:560px){.factrow{grid-template-columns:minmax(0,1fr)}}
+.factrow div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1rem}
+.factrow b{display:block;font-family:var(--f-display);font-size:2rem;font-weight:800;font-stretch:85%;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--blue-ink)}
+.factrow span{color:var(--muted);font-size:.88rem}
+
+/* Bagan BPD */
+.org{display:grid;justify-items:center;gap:0;padding:clamp(1rem,3vw,2rem);background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.org .ttl{text-align:center;margin-bottom:1.25rem;display:grid;gap:.25rem}
+.org .ttl b{font-family:var(--f-display);font-size:1.35rem;font-weight:900;font-stretch:85%;text-transform:uppercase;letter-spacing:.02em}
+.org .ttl span{display:inline-block;justify-self:center;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:var(--on-blue);padding:.25rem .8rem;border-radius:999px}
+.node{width:min(100%,340px);border:2px solid var(--blue);border-radius:6px;overflow:hidden;text-align:center;background:var(--surface)}
+.node small{display:block;background:var(--blue);color:var(--on-blue);font-family:var(--f-display);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;padding:.35rem}
+.node b{display:block;padding:.6rem .75rem;font-size:1.02rem}
+.vline{width:2px;height:22px;background:var(--brown)}
+.branch{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem;position:relative;padding-top:22px}
+.branch::before{content:"";position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--brown)}
+.branch>div{position:relative;border:2px solid var(--blue);border-radius:6px;overflow:hidden;background:var(--surface)}
+.branch>div::before{content:"";position:absolute;top:-24px;left:50%;width:2px;height:22px;background:var(--brown)}
+.branch>div{overflow:visible}
+.bh{background:var(--blue);color:var(--on-blue);text-align:center;padding:.4rem;font-family:var(--f-display);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;border-radius:3px 3px 0 0}
+.bd{background:var(--gold);color:#2a2300;text-align:center;padding:.5rem .75rem;font-size:.85rem;font-weight:600;line-height:1.35}
+.branch dl{margin:0;padding:.4rem .75rem .6rem}
+.branch dl div{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:.75rem;padding:.45rem 0;border-top:1px solid var(--line);align-items:center}
+.branch dl div:first-child{border-top:0}
+.branch dt{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-ink)}
+.branch dd{margin:0;font-weight:600}
+@media (max-width:640px){.branch{grid-template-columns:minmax(0,1fr);gap:1.75rem}.branch::before{display:none}.branch>div:first-child::before{top:-24px}.branch>div:last-child::before{top:-30px;height:28px}}
+
+/* Visi misi */
+.visi{background:var(--band);color:#fff}
+.visi .wrap{display:grid;gap:2.5rem}
+.visi .eyebrow{color:var(--gold)}
+.visi blockquote{margin:0;font-family:var(--f-display);font-weight:800;font-stretch:84%;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.15;text-transform:uppercase;max-width:28ch}
+.visi blockquote small{display:block;max-width:60ch;font-family:var(--f-body);font-size:.95rem;font-weight:500;text-transform:none;letter-spacing:0;line-height:1.6;opacity:.85;margin-top:1.25rem}
+.misi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.3);counter-reset:m}
+.misi li{padding:1.1rem 1.2rem 1.2rem 0;display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.5rem;border-bottom:1px solid rgba(255,255,255,.3)}
+.misi li::before{content:counter(m);counter-increment:m;font-family:var(--f-display);font-weight:900;font-size:1.6rem;line-height:1;color:var(--gold)}
+@media (max-width:860px){.misi{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:560px){.misi{grid-template-columns:minmax(0,1fr)}}
+
+/* Potensi */
+.pot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+@media (max-width:860px){.pot{grid-template-columns:minmax(0,1fr)}}
+.pot article{display:grid;gap:.7rem;align-content:start}
+.pot img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px;background:var(--sunk)}
+.pot p{color:var(--muted);font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tags span{font-size:.78rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;background:var(--sunk);border:1px solid var(--line)}
+
+/* RPJMDes */
+.rp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem;align-items:start}
+@media (max-width:860px){.rp{grid-template-columns:minmax(0,1fr)}}
+details{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;display:flex;justify-content:space-between;gap:1rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-display);font-size:1.3rem;line-height:1;color:var(--brown)}
+details[open] summary::after{content:"–"}
+summary small{display:block;font-weight:500;color:var(--muted);font-size:var(--s-1)}
+details ul{margin:0;padding:0 1.2rem 1.1rem 2.3rem;display:grid;gap:.35rem;font-size:.93rem}
+.steps{list-style:none;margin:0 0 2.5rem;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:s}
+.steps li{border-top:3px solid var(--brown);padding-top:.75rem;font-size:.9rem;display:grid;gap:.25rem;align-content:start}
+.steps li b::before{counter-increment:s;content:"Tahap " counter(s);display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);margin-bottom:.15rem}
+.steps li span{color:var(--muted)}
+@media (max-width:860px){.steps{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* Galeri */
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:760px){.gal{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:420px){.gal{grid-template-columns:minmax(0,1fr)}}
+.gitem{margin:0;position:relative;display:grid;gap:.4rem;align-content:start}
+.gopen{all:unset;cursor:zoom-in;display:block;width:100%}
+.gopen:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.gitem img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block;background:var(--sunk)}
+.gitem figcaption{font-size:.85rem;color:var(--muted)}
+.gtools{display:none;position:absolute;top:.5rem;right:.5rem;gap:.35rem}
+body.is-admin .gtools{display:flex}
+.gtools button{font:inherit;font-size:.78rem;font-weight:700;border:0;border-radius:5px;padding:.35rem .65rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.gtools .e{background:#ffffff;color:#1a5c91}
+.gtools .d{background:#b3261e;color:#ffffff}
+.gadd{display:none;font:inherit;font-weight:700;color:var(--blue-ink);border:2px dashed var(--blue);border-radius:6px;background:var(--surface);aspect-ratio:4/3;cursor:pointer;place-items:center;gap:.25rem;text-align:center;padding:1rem}
+.gadd{align-content:center}
+.gadd span{display:block;font-size:2rem;line-height:1}
+body.is-admin .gadd{display:grid}
+.empty{color:var(--muted);padding:1rem 0}
+
+/* Layanan */
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:900px){.svc{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:520px){.svc{grid-template-columns:minmax(0,1fr)}}
+.svc div{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:1rem 1.1rem;display:grid;gap:.3rem;align-content:start}
+.svc p{font-size:.9rem;color:var(--muted)}
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem);margin-top:2.5rem;align-items:center}
+@media (max-width:860px){.contact{grid-template-columns:minmax(0,1fr)}}
+.contact img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--gold);padding-left:.8rem}
+
+footer{background:#13202a;color:#cfd8dc;font-size:.9rem}
+footer .wrap{padding-block:2.5rem calc(2rem + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:2rem;align-items:start}
+footer .logos{display:flex;gap:1rem;align-items:center}
+footer .logos img{width:56px;height:56px;object-fit:contain}
+footer b{color:#fff;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.03em}
+footer nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.3rem}
+footer a{color:#cfd8dc;text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:1rem;font-size:.8rem;color:#9fb0b8}
+@media (max-width:700px){footer .wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* Lightbox, modal, toast */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(8,12,14,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb[hidden],.modal[hidden],.toast[hidden]{display:none}
+.lb img{max-height:82vh;max-width:100%;border-radius:4px}
+.lb p{color:#e8ece6;text-align:center;margin-top:.75rem;font-size:.9rem}
+.lb .x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));font:inherit;font-weight:700;background:#fff;color:#111;border:0;border-radius:6px;padding:.5rem .9rem;cursor:pointer}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(8,12,14,.6);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
+.mbox{background:var(--surface);color:var(--fg);border-radius:10px;width:min(100%,460px);padding:1.5rem;display:grid;gap:1rem;box-shadow:0 20px 50px rgba(0,0,0,.3);max-height:calc(100vh - 32px);overflow-y:auto}
+.mbox h3{font-size:1.3rem}
+.mbox p,.mbox ol{color:var(--muted);font-size:.9rem;margin:0}
+.mbox ol{padding-left:1.2rem;display:grid;gap:.25rem}
+.field{display:grid;gap:.3rem}
+.field label{font-weight:600;font-size:.88rem}
+.field input{font:inherit;padding:.6rem .75rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);width:100%}
+.field input:focus{outline:2px solid var(--blue);outline-offset:0;border-color:var(--blue)}
+.field small{color:var(--muted);font-size:.78rem}
+.mact{display:flex;gap:.5rem;justify-content:flex-end;flex-wrap:wrap}
+.msg{font-size:.88rem;padding:.6rem .75rem;border-radius:6px;background:var(--sunk)}
+.msg.err{background:color-mix(in srgb,var(--danger) 14%,var(--surface));color:var(--danger)}
+.linkbtn{all:unset;cursor:pointer;color:var(--blue-ink);font-size:.85rem;font-weight:600;text-decoration:underline}
+.prev{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;background:var(--sunk)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;background:#13202a;color:#fff;padding:.75rem 1.1rem;border-radius:8px;font-size:.9rem;max-width:calc(100% - 32px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+</style>
+<style>[hidden]{display:none!important}img{max-width:100%}body{margin:0}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#beranda">
+      <img src="img/logo-jeneponto.png" alt="Logo Kabupaten Jeneponto">
+      <span><b>Desa Tanammawang</b><small>Kec. Bontoramba · Kab. Jeneponto</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Menu utama">
+      <a href="#beranda" data-nav="beranda">Beranda</a>
+      <div class="dd" data-group="profil">
+        <button class="dd-btn" aria-expanded="false">Profil Desa</button>
+        <div class="dd-menu">
+          <a href="#sejarah">Sejarah Desa<small>Asal-usul dan kepala desa</small></a>
+          <a href="#wilayah">Letak &amp; Wilayah<small>Batas, jarak, dusun</small></a>
+          <a href="#visi">Visi &amp; Misi<small>Periode 2022–2027</small></a>
+          <a href="#potensi">Potensi Desa<small>Pertanian, sosial, ekonomi</small></a>
+        </div>
+      </div>
+      <a href="#data" data-nav="data">Data Desa</a>
+      <div class="dd" data-group="lembaga">
+        <button class="dd-btn" aria-expanded="false">Lembaga Desa</button>
+        <div class="dd-menu">
+          <a href="#lembaga-pemdes">Pemerintah Desa</a>
+          <a href="#lembaga-bpd">Badan Permusyawaratan Desa (BPD)</a>
+          <a href="#lembaga-pkk">Tim Penggerak PKK</a>
+          <a href="#lembaga-tani">Kelompok Tani &amp; Gapoktan</a>
+          <a href="#lembaga-posyandu">Kader Posyandu</a>
+          <a href="#lembaga-masjid">Remaja Masjid &amp; TKA/TPA</a>
+        </div>
+      </div>
+      <a href="#rpjmdes" data-nav="rpjmdes">RPJMDes</a>
+      <a href="#galeri" data-nav="galeri">Galeri</a>
+      <a href="#layanan" data-nav="layanan">Layanan</a>
+    </nav>
+    <div class="tools">
+      <button class="admin-btn" id="adminBtn"><span class="lbl-long">Login </span>Admin</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="adminbar" id="adminbar" hidden>
+  <div class="wrap"><span>Mode admin aktif. Tombol Edit dan Hapus muncul di setiap foto galeri.</span><button id="logoutBtn">Keluar</button></div>
+</div>
+
+<main>
+<!-- BERANDA -->
+<div class="view" data-view="beranda">
+  <section class="hero" aria-label="Beranda">
+    <div class="wrap">
+      <span class="eyebrow">Selamat datang di</span>
+      <h1>Desa Tanammawang</h1>
+      <p>Desa agraris di Kecamatan Bontoramba, Kabupaten Jeneponto, Sulawesi Selatan. Enam dusun, satu semangat gotong royong: sipakatau, siri' na pacce.</p>
+    </div>
+  </section>
+  <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <section class="facts" aria-label="Angka utama desa">
+    <div class="wrap"><dl>
+      <div><dt>Jumlah penduduk</dt><dd>2.300<span>jiwa</span></dd></div>
+      <div><dt>Kepala keluarga</dt><dd>710<span>KK</span></dd></div>
+      <div><dt>Wilayah dusun</dt><dd>6<span>dusun</span></dd></div>
+      <div><dt>Jarak ke ibu kota kabupaten</dt><dd>± 16<span>km</span></dd></div>
+    </dl></div>
+  </section>
+  <section class="band">
+    <div class="wrap greet">
+      <figure>
+        <img src="img/kades.jpg" alt="Iskandar S., Kepala Desa Tanammawang">
+        <figcaption><b>Iskandar S.</b><span>Kepala Desa Tanammawang, periode 2022–2029</span></figcaption>
+      </figure>
+      <div class="text">
+        <span class="eyebrow">Sambutan Kepala Desa</span>
+        <blockquote>Mewujudkan tata kelola pemerintahan yang bersih, transparan, dan bertanggung jawab.</blockquote>
+        <p>Assalamu'alaikum warahmatullahi wabarakatuh.</p>
+        <p>Selamat datang di website Desa Tanammawang. Website ini kami hadirkan sebagai sarana keterbukaan informasi bagi seluruh warga dan masyarakat luas: profil desa, data kependudukan, arah pembangunan dalam RPJMDes 2022–2027, hingga kegiatan pemerintah desa.</p>
+        <p>Pembangunan desa adalah kerja bersama. Dengan semangat gotong royong yang masih kuat di tengah warga, kami mengajak seluruh masyarakat untuk ikut mengawal pembangunan menuju Desa Tanammawang yang mandiri dan sejahtera.</p>
+        <p>Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Jelajahi</span><h2>Informasi desa</h2></div>
+      <div class="explore">
+        <a href="#sejarah"><b>Sejarah Desa</b><span>Dari Bori menjadi desa, dan kepala desa dari masa ke masa.</span><em>Buka halaman →</em></a>
+        <a href="#data"><b>Data Desa</b><span>Penduduk per dusun, usia, pendidikan, pekerjaan, dan lahan.</span><em>Buka halaman →</em></a>
+        <a href="#lembaga-bpd"><b>Lembaga Desa</b><span>Pemerintah desa, BPD periode 2026–2034, PKK, dan kelompok warga.</span><em>Buka halaman →</em></a>
+        <a href="#visi"><b>Visi &amp; Misi</b><span>Arah pemerintahan desa periode 2022–2027.</span><em>Buka halaman →</em></a>
+        <a href="#rpjmdes"><b>RPJMDes</b><span>Rencana pembangunan dan masalah prioritas desa.</span><em>Buka halaman →</em></a>
+        <a href="#layanan"><b>Layanan</b><span>Administrasi warga dan alamat kantor desa.</span><em>Buka halaman →</em></a>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="rowhead"><div class="head" style="margin:0"><span class="eyebrow">Galeri</span><h2>Foto terbaru</h2></div><a class="btn" href="#galeri">Lihat semua foto</a></div>
+      <div class="gal" id="galPreview"></div>
+    </div>
+  </section>
+</div>
+
+<!-- SEJARAH -->
+<div class="view" data-view="sejarah" data-group="profil" data-title="Sejarah Desa" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a> / Profil Desa</span><h1>Sejarah Desa</h1></div></section>
+  <section class="band">
+    <div class="wrap two">
+      <div class="prose">
+        <p>Pada tahun 1980-an, status wilayah yang sebelumnya disebut <em>Bori</em> berubah menjadi <em>Desa</em>. Tanammawang kemudian berjalan sebagai desa persiapan di bawah kepemimpinan H. Manai, hingga menjadi desa definitif dan membenahi struktur pemerintahan desanya.</p>
+        <p>Sejak itu, kepemimpinan desa berganti melalui pemilihan kepala desa. Iskandar S. terpilih pada periode 2016–2021 dan kembali dipercaya warga untuk periode kedua, 2022–2029.</p>
+        <p>Masyarakat Tanammawang dikenal ramah, tekun, dan rajin bekerja. Budaya saling membantu masih hidup, terutama saat hajatan pernikahan, sunatan, atau duka. Warga membawa sumbangan berupa uang, beras, atau pakaian (<em>passalingan</em>), yang kelak dikembalikan saat penyumbang punya hajatan. Jalan tani sepanjang 2 km di tengah persawahan dibangun secara swadaya oleh warga.</p>
+        <p class="src">Sumber: tokoh masyarakat, dikutip dalam Profil dan RPJMDes Desa Tanammawang 2022–2027.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:.75rem">Kepala Desa dari masa ke masa</h3>
+        <ol class="timeline">
+          <li><span class="yr">1993–2004</span><div><b>H. Manai</b><span>Desa persiapan hingga desa definitif; pembenahan struktur pemerintahan desa</span></div></li>
+          <li><span class="yr">2004–2009</span><div><b>Ahmad Muhiddin</b><span>Kepala desa terpilih</span></div></li>
+          <li><span class="yr">2010–2015</span><div><b>Baharuddin</b><span>Kepala desa terpilih</span></div></li>
+          <li><span class="yr">2016–2021</span><div><b>Iskandar S.</b><span>Kepala desa terpilih, periode pertama</span></div></li>
+          <li class="now"><span class="yr">2022–2029</span><div><b>Iskandar S.</b><span>Terpilih kembali, periode kedua</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WILAYAH -->
+<div class="view" data-view="wilayah" data-group="profil" data-title="Letak & Wilayah" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a> / Profil Desa</span><h1>Letak &amp; Wilayah</h1><p>Dataran subur untuk tanaman pangan dan hortikultura, dengan sebagian wilayah berupa perbukitan. Sungai Lombu Raya dan bendungan Tanammawang menjadi sumber air utama pertanian.</p></div></section>
+  <section class="band">
+    <div class="wrap geo">
+      <div>
+        <div class="compass" role="list" aria-label="Batas wilayah desa">
+          <div class="n" role="listitem"><small>Utara</small>Kabupaten Gowa</div>
+          <div class="w" role="listitem"><small>Barat</small>Kareloe</div>
+          <div class="c" role="listitem">Desa Tanam&shy;mawang</div>
+          <div class="e" role="listitem"><small>Timur</small>Desa Datara dan Baraya</div>
+          <div class="s" role="listitem"><small>Selatan</small>Desa Baraya</div>
+        </div>
+        <dl class="kv">
+          <div><dt>Kecamatan</dt><dd>Bontoramba</dd></div>
+          <div><dt>Kabupaten</dt><dd>Jeneponto, Sulawesi Selatan</dd></div>
+          <div><dt>Luas wilayah</dt><dd class="num">3.158 Ha</dd></div>
+          <div><dt>Ke ibu kota kabupaten</dt><dd>± 16 km, sekitar 35 menit</dd></div>
+          <div><dt>Ke ibu kota kecamatan</dt><dd>± 5 km, sekitar 10 menit</dd></div>
+          <div><dt>Musim hujan</dt><dd>November – April</dd></div>
+          <div><dt>Musim kemarau</dt><dd>Mei – Oktober</dd></div>
+        </dl>
+        <div class="dusun" aria-label="Daftar dusun">
+          <span>Dusun Kawari I</span><span>Dusun Kawari II</span><span>Dusun Tangkulu</span><span>Dusun Tanammawang</span><span>Dusun Sarroanging I</span><span>Dusun Sarroanging II</span>
+        </div>
+      </div>
+      <figure class="map">
+        <img src="img/peta-jeneponto.jpg" alt="Peta wilayah Kabupaten Jeneponto" loading="lazy">
+        <figcaption>Peta wilayah Kabupaten Jeneponto. Desa Tanammawang berada di Kecamatan Bontoramba, berbatasan langsung dengan Kabupaten Gowa di utara. Sumber: Bappeda Kab. Jeneponto, 2007.</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<!-- VISI MISI -->
+<div class="view" data-view="visi" data-group="profil" data-title="Visi & Misi" hidden>
+  <section class="band visi">
+    <div class="wrap">
+      <span class="crumb"><a href="#beranda">Beranda</a> / Profil Desa</span>
+      <span class="eyebrow">Visi Desa 2022–2027</span>
+      <blockquote>Mewujudkan tata kelola pemerintahan yang bersih, transparan, dan bertanggung jawab guna menciptakan masyarakat Desa Tanammawang yang mandiri dan sejahtera<small>Sejahtera dari aspek ekonomi, sosial budaya, keamanan dan ketertiban. Mandiri dalam mengelola pendidikan, kesehatan, tatanan sosial, permukiman, serta sarana dan prasarana desa.</small></blockquote>
+      <div>
+        <span class="eyebrow">Misi</span>
+        <ol class="misi" style="margin-top:1rem">
+          <li><span>Meningkatkan mutu dan produktivitas sumber daya manusia</span></li>
+          <li><span>Memajukan ketertiban dan kenyamanan dalam kehidupan bermasyarakat</span></li>
+          <li><span>Meningkatkan mutu dan optimalisasi pemanfaatan sumber daya alam</span></li>
+          <li><span>Meningkatkan pertumbuhan ekonomi masyarakat</span></li>
+          <li><span>Memperluas dan meningkatkan mutu infrastruktur desa</span></li>
+          <li><span>Meningkatkan dan memperluas jaringan kerja sama pemerintahan dan nonpemerintahan</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- POTENSI -->
+<div class="view" data-view="potensi" data-group="profil" data-title="Potensi Desa" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a> / Profil Desa</span><h1>Potensi Desa</h1><p>Kekuatan yang bisa dikembangkan untuk menuju masyarakat yang sejahtera dan mandiri.</p></div></section>
+  <section class="band">
+    <div class="wrap pot">
+      <article>
+        <img src="img/irigasi.jpg" alt="Pompa air dan pipa irigasi di tepi sungai" loading="lazy">
+        <h3>Pertanian dan peternakan</h3>
+        <p>Sawah ditanami padi; kebun ditanami jagung kuning, ubi kayu, kacang hijau, dan lombok. Peternakan kambing, sapi, dan kuda masih dikelola secara tradisional dan berpeluang dikembangkan, termasuk pakan ternak dari jerami dan ubi kayu.</p>
+        <div class="tags"><span>Padi</span><span>Jagung kuning</span><span>Ubi kayu</span><span>Kacang hijau</span><span>Lombok</span><span>Sapi</span><span>Kambing</span><span>Kuda</span></div>
+      </article>
+      <article>
+        <img src="img/musyawarah.jpg" alt="Warga dan aparat desa berfoto bersama di balai desa" loading="lazy">
+        <h3>Sosial budaya</h3>
+        <p>Tenaga kerja yang besar, warga yang ramah dan tekun, serta budaya sipakatau dan siri' na pacce yang lestari. Gotong royong terlihat dari pembangunan jalan tani 2 km secara swadaya.</p>
+        <div class="tags"><span>Gotong royong</span><span>Passalingan</span><span>Majelis taklim</span><span>Karang taruna</span></div>
+      </article>
+      <article>
+        <img src="img/kantor.jpg" alt="Bangunan kantor desa dengan tiang merah" loading="lazy">
+        <h3>Ekonomi dan wilayah</h3>
+        <p>Kelompok Simpan Pinjam Perempuan (SPP) dan BUMDes berpotensi menggerakkan ekonomi warga. Infrastruktur dasar, jalan, jembatan, bendungan, dan irigasi Lombu Raya menjadi modal pengembangan wilayah.</p>
+        <div class="tags"><span>Kelompok SPP</span><span>BUMDes</span><span>Irigasi Lombu Raya</span><span>15 penggilingan padi</span></div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- DATA -->
+<div class="view" data-view="data" data-title="Data Desa" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a></span><h1>Data Desa</h1><p>Hasil pendataan SDGs Desa Tanammawang tahun 2020.</p></div></section>
+  <section class="band alt">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Pilih data">
+        <button role="tab" id="t-dusun" aria-selected="true" aria-controls="p-dusun">Per dusun</button>
+        <button role="tab" id="t-usia" aria-selected="false" aria-controls="p-usia">Kelompok usia</button>
+        <button role="tab" id="t-didik" aria-selected="false" aria-controls="p-didik">Pendidikan</button>
+        <button role="tab" id="t-kerja" aria-selected="false" aria-controls="p-kerja">Pekerjaan</button>
+        <button role="tab" id="t-sejahtera" aria-selected="false" aria-controls="p-sejahtera">Kesejahteraan</button>
+        <button role="tab" id="t-lahan" aria-selected="false" aria-controls="p-lahan">Lahan &amp; sarana</button>
+      </div>
+      <div class="panel" role="tabpanel" id="p-dusun" aria-labelledby="t-dusun">
+        <h3>Jumlah penduduk per dusun</h3>
+        <p class="lede">2.300 jiwa dalam 710 kepala keluarga: 1.105 laki-laki dan 1.195 perempuan.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Dusun</th><th class="r">KK</th><th class="r">Laki-laki</th><th class="r">Perempuan</th><th class="r">Jiwa</th><th style="width:30%"></th></tr></thead>
+          <tbody id="dusunBody"></tbody>
+          <tfoot><tr><td>Jumlah</td><td class="r">710</td><td class="r">1.105</td><td class="r">1.195</td><td class="r">2.300</td><td></td></tr></tfoot>
+        </table></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-usia" aria-labelledby="t-usia" hidden>
+        <h3>Piramida penduduk</h3>
+        <p class="lede">Kelompok usia produktif 18–45 tahun berjumlah 1.047 jiwa, hampir separuh penduduk desa.</p>
+        <div class="legend"><span><i style="background:var(--blue)"></i>Laki-laki</span><span><i style="background:var(--brown)"></i>Perempuan</span></div>
+        <div class="pyr" id="pyr"></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-didik" aria-labelledby="t-didik" hidden>
+        <h3>Tingkat pendidikan warga</h3>
+        <p class="lede">Jumlah warga menurut pendidikan terakhir yang ditamatkan.</p>
+        <div class="hbars" id="didik"></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-kerja" aria-labelledby="t-kerja" hidden>
+        <h3>Pekerjaan kepala keluarga</h3>
+        <p class="lede">Mayoritas warga bertani kebun dan sawah. Banyak yang menjalankan pekerjaan ganda, misalnya pedagang sekaligus petani.</p>
+        <div class="hbars" id="kerja"></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-sejahtera" aria-labelledby="t-sejahtera" hidden>
+        <h3>Tingkat kesejahteraan keluarga</h3>
+        <p class="lede">Diukur dengan 13 indikator yang disusun warga sendiri: rumah, pekerjaan, kendaraan, penerangan, air bersih, kemampuan menyekolahkan anak, kemampuan berobat, jamban keluarga, lahan, ternak, bahan bakar, emas/perhiasan, dan perabot.</p>
+        <div class="split" id="sejSum"></div>
+        <div class="tbl"><table>
+          <thead><tr><th>Dusun</th><th class="r">Kaya</th><th class="r">Sedang</th><th class="r">Miskin</th><th class="r">Jumlah KK</th></tr></thead>
+          <tbody id="sejBody"></tbody>
+        </table></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-lahan" aria-labelledby="t-lahan" hidden>
+        <h3>Penggunaan tanah</h3>
+        <p class="lede">Sawah irigasi dapat ditanami 2–3 kali setahun, sedangkan sawah tadah hujan dan ladang hanya pada musim hujan.</p>
+        <div class="hbars" id="lahan"></div>
+        <h3 style="margin-top:2rem;margin-bottom:.75rem">Sarana dan prasarana umum</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>Sarana</th><th class="r">Volume</th><th>Sarana</th><th class="r">Volume</th></tr></thead>
+          <tbody>
+            <tr><td>Kantor Desa</td><td class="r">1 unit</td><td>Jalan desa</td><td class="r">5 km</td></tr>
+            <tr><td>TK</td><td class="r">2 unit</td><td>Jalan tani</td><td class="r">1.100 m</td></tr>
+            <tr><td>PAUD</td><td class="r">2 unit</td><td>Jalan setapak (PNPM &amp; ADD)</td><td class="r">1.000 m</td></tr>
+            <tr><td>SD</td><td class="r">2 unit</td><td>Drainase</td><td class="r">4.670 m</td></tr>
+            <tr><td>SMP Satu Atap</td><td class="r">1 unit</td><td>Jembatan</td><td class="r">1 unit</td></tr>
+            <tr><td>Masjid</td><td class="r">6 unit</td><td>Penggilingan padi</td><td class="r">15 unit</td></tr>
+            <tr><td>Posyandu</td><td class="r">2 unit</td><td>Sumur bor</td><td class="r">3 unit</td></tr>
+            <tr><td>Lapangan</td><td class="r">1 unit</td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <p class="src">Sumber: Hasil Pendataan SDGs Desa Tanammawang 2020, dalam Profil dan RPJMDes Desa Tanammawang 2022–2027.</p>
+    </div>
+  </section>
+</div>
+
+<!-- LEMBAGA DESA -->
+<div class="view" data-view="lembaga" data-group="lembaga" data-title="Lembaga Desa" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a> / Lembaga Desa</span><h1 id="lemTitle">Lembaga Desa</h1></div></section>
+  <section class="band alt">
+    <div class="wrap lem">
+      <nav class="subnav" aria-label="Daftar lembaga desa">
+        <a href="#lembaga-pemdes">Pemerintah Desa</a>
+        <a href="#lembaga-bpd">BPD</a>
+        <a href="#lembaga-pkk">Tim Penggerak PKK</a>
+        <a href="#lembaga-tani">Kelompok Tani &amp; Gapoktan</a>
+        <a href="#lembaga-posyandu">Kader Posyandu</a>
+        <a href="#lembaga-masjid">Remaja Masjid &amp; TKA/TPA</a>
+      </nav>
+
+      <div class="lpanel" data-sub="lembaga-pemdes" data-name="Pemerintah Desa">
+        <div class="card kades">
+          <img src="img/kades.jpg" alt="Iskandar S., Kepala Desa Tanammawang">
+          <div style="display:grid;gap:.8rem">
+            <div><span class="eyebrow">Kepala Desa</span><h2 style="font-size:1.8rem">Iskandar S.</h2></div>
+            <ul>
+              <li><span>Masa jabatan</span><span>2022–2029 (periode kedua)</span></li>
+              <li><span>Wilayah</span><span>6 dusun</span></li>
+              <li><span>Kantor</span><span>Kantor Desa Tanammawang</span></li>
+            </ul>
+            <p class="note">Kepala desa dibantu sekretaris desa, kepala urusan, kepala seksi, dan kepala dusun. Nama perangkat desa akan dilengkapi.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:.6rem">Wilayah dusun</h3>
+          <div class="dusun" style="margin:0"><span>Kawari I</span><span>Kawari II</span><span>Tangkulu</span><span>Tanammawang</span><span>Sarroanging I</span><span>Sarroanging II</span></div>
+        </div>
+      </div>
+
+      <div class="lpanel" data-sub="lembaga-bpd" data-name="Badan Permusyawaratan Desa" hidden>
+        <p>BPD dipilih secara demokratis, bersama Kepala Desa membahas dan menetapkan peraturan desa, menampung aspirasi warga, serta mengawasi jalannya pemerintahan desa.</p>
+        <div class="org" aria-label="Bagan struktur organisasi BPD">
+          <div class="ttl"><b>Struktur Organisasi BPD</b><span>Periode 2026–2034</span></div>
+          <div class="node"><small>Ketua</small><b>Paisal, S.Sos.</b></div>
+          <div class="vline"></div>
+          <div class="node"><small>Wakil Ketua</small><b>Rahmat, S.Ak.</b></div>
+          <div class="vline"></div>
+          <div class="node"><small>Sekretaris</small><b>Putri Patuh Rahma, S.Pd.</b></div>
+          <div class="branch">
+            <div>
+              <div class="bh">Ketua Bidang 1</div>
+              <div class="bd">Penyelenggaraan Pemerintahan Desa dan Pembinaan Kemasyarakatan</div>
+              <dl><div><dt>Ketua</dt><dd>A. Rezky Auliyah Jamal</dd></div><div><dt>Anggota</dt><dd>Ilyas</dd></div></dl>
+            </div>
+            <div>
+              <div class="bh">Ketua Bidang 2</div>
+              <div class="bd">Pembangunan Desa dan Pemberdayaan Masyarakat Desa</div>
+              <dl><div><dt>Ketua</dt><dd>Yusri</dd></div><div><dt>Anggota</dt><dd>Nur Aisya Ramadhani, S.Pd.</dd></div></dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lpanel" data-sub="lembaga-pkk" data-name="Tim Penggerak PKK" hidden>
+        <p>Pembinaan Kesejahteraan Keluarga menggerakkan kegiatan kaum perempuan dan ibu rumah tangga, dibantu Kelompok Kerja (Pokja) di tingkat dusun dan rukun tetangga.</p>
+        <div class="card"><ul>
+          <li><span>Ketua</span><span>Darmayani</span></li>
+          <li><span>Wakil Ketua</span><span>Kasmawati</span></li>
+          <li><span>Sekretaris</span><span>Sri Herawati</span></li>
+          <li><span>Bendahara</span><span>Herlina</span></li>
+        </ul></div>
+      </div>
+
+      <div class="lpanel" data-sub="lembaga-tani" data-name="Kelompok Tani & Gapoktan" hidden>
+        <p>Kelompok tani mengorganisir kebutuhan petani dan membina anggota melalui penyuluh pertanian lapangan untuk meningkatkan taraf hidup masyarakat petani.</p>
+        <div class="factrow">
+          <div><b>24</b><span>kelompok tani</span></div>
+          <div><b>± 25</b><span>anggota per kelompok</span></div>
+          <div><b>1</b><span>Gapoktan (gabungan kelompok tani)</span></div>
+        </div>
+      </div>
+
+      <div class="lpanel" data-sub="lembaga-posyandu" data-name="Kader Posyandu" hidden>
+        <p>Kader posyandu adalah tenaga sukarela yang membantu bidan desa dalam pelayanan KB serta layanan kesehatan ibu dan anak. Kader aktif menjalankan tugas, namun masih memerlukan pembinaan dan dukungan sarana.</p>
+        <div class="factrow">
+          <div><b>2</b><span>posyandu di desa</span></div>
+          <div><b>6</b><span>dusun yang dilayani</span></div>
+          <div><b>155</b><span>balita usia 0–4 tahun (SDGs 2020)</span></div>
+        </div>
+      </div>
+
+      <div class="lpanel" data-sub="lembaga-masjid" data-name="Remaja Masjid & TKA/TPA" hidden>
+        <p>Remaja masjid dan guru mengaji membina pendidikan keagamaan dan pemberantasan buta huruf Al-Qur'an melalui TKA/TPA yang aktif di setiap masjid.</p>
+        <div class="factrow">
+          <div><b>4</b><span>masjid</span></div>
+          <div><b>2</b><span>musala</span></div>
+          <div><b>TKA/TPA</b><span>aktif dalam kegiatan belajar mengaji</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- RPJMDES -->
+<div class="view" data-view="rpjmdes" data-title="RPJMDes" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a></span><h1>RPJMDes 2022–2027</h1><p>Disusun bersama warga melalui musyawarah desa dan Musrenbangdes pada 28 Maret 2022 di Balai Desa, lalu dijabarkan setiap tahun dalam RKP Desa.</p></div></section>
+  <section class="band alt">
+    <div class="wrap">
+      <ol class="steps">
+        <li><b>Pembentukan tim</b><span>Musdes sosialisasi dan pembentukan Tim Penyusun (9 orang)</span></li>
+        <li><b>Penyelarasan</b><span>Mencermati RPJMD, RPJPD, RKPD, dan RTRW daerah</span></li>
+        <li><b>Pengkajian desa</b><span>Sketsa desa, kalender musim, diagram kelembagaan</span></li>
+        <li><b>Musyawarah desa</b><span>Membahas hasil kajian dan arah kebijakan bersama BPD</span></li>
+        <li><b>Musrenbangdes</b><span>Pembahasan dan penyepakatan rancangan RPJMDes</span></li>
+      </ol>
+      <h3 style="margin-bottom:1rem">Arah kebijakan pembangunan</h3>
+      <div class="rp">
+        <details open><summary><span>Sumber daya manusia<small>Misi 1</small></span></summary><ul>
+          <li>Peningkatan kualitas pendidikan formal dan nonformal</li><li>Penurunan angka buta aksara</li><li>Perluasan jaminan pelayanan kesehatan, terutama bagi penduduk miskin</li><li>Pendidikan kesehatan sejak dini</li><li>Bantuan bibit unggul, kredit lunak, dan pengenalan teknologi</li></ul></details>
+        <details><summary><span>Ketertiban dan lingkungan<small>Misi 2</small></span></summary><ul>
+          <li>Peningkatan keamanan dan ketertiban masyarakat</li><li>Akses sanitasi dan air bersih</li><li>Lingkungan sehat dan perilaku hidup bersih dan sehat</li><li>Peningkatan gizi masyarakat</li></ul></details>
+        <details><summary><span>Sumber daya alam dan pertanian<small>Misi 3</small></span></summary><ul>
+          <li>Penyediaan sarana dan prasarana pertanian</li><li>Ketersediaan sarana pengairan persawahan</li><li>Peningkatan kualitas SDM sektor pertanian</li></ul></details>
+        <details><summary><span>Ekonomi masyarakat<small>Misi 4</small></span></summary><ul>
+          <li>Penguatan lembaga dan pelaku ekonomi kerakyatan</li><li>Kemudahan akses permodalan bagi warga miskin dan pelaku usaha</li><li>Profesionalisme koperasi dan UMKM</li><li>Akses informasi mutu produksi dan pemasaran</li><li>Kualitas, kuantitas, dan kontinuitas produksi</li></ul></details>
+        <details><summary><span>Infrastruktur desa<small>Misi 5</small></span></summary><ul>
+          <li>Infrastruktur pendukung ekonomi, terutama wilayah terisolasi</li><li>Penataan dan pengendalian pemanfaatan ruang</li><li>Infrastruktur dasar pendidikan dan kesehatan</li><li>Infrastruktur pendukung komoditas unggulan</li></ul></details>
+        <details><summary><span>Kerja sama dan kelembagaan<small>Misi 6</small></span></summary><ul>
+          <li>Komunikasi dengan lembaga swadaya masyarakat</li><li>Penguatan kelembagaan desa</li><li>Target pertumbuhan pendapatan desa 10% per tahun</li></ul></details>
+      </div>
+      <h3 style="margin:2.5rem 0 1rem">Masalah prioritas yang ingin diselesaikan</h3>
+      <div class="rp">
+        <details><summary><span>Pembangunan desa<small>Jalan, irigasi, pendidikan, sarana tani</small></span></summary><ul>
+          <li>Kantor desa belum direhabilitasi</li><li>Jalan menuju permukiman rusak, sebagian rusak berat</li><li>Jalan poros Dusun Sarroanging I dan II rusak berat</li><li>Drainase permukiman kurang dan sebagian rusak</li><li>Saluran irigasi Lombu Raya rusak ringan hingga berat</li><li>Sebagian dusun belum memiliki posyandu permanen</li><li>Belum semua dusun dapat mengakses PAUD</li><li>Masih ada warga yang belum bisa baca tulis</li><li>Belum ada taman belajar dan ruang terbuka hijau</li><li>Petani kesulitan air persawahan dan modal usaha tani</li><li>Kurangnya alat pertanian: hand traktor, pompa air, hand sprayer, mesin pemipil jagung dan padi</li><li>Pengelolaan BUMDes belum maksimal</li></ul></details>
+        <details><summary><span>Pemerintahan desa<small>Perdes, BPD, kantor desa</small></span></summary><ul>
+          <li>Penyusunan Perdes belum sepenuhnya mengikuti mekanisme</li><li>BPD belum memiliki sarana pendukung (kantor, ruang rapat, perabot)</li><li>Pengelolaan inventaris kantor desa belum tertib</li><li>Prasarana penunjang kantor desa masih kurang</li></ul></details>
+        <details><summary><span>Pembinaan kemasyarakatan<small>Keamanan, pemuda, keagamaan, PKK</small></span></summary><ul>
+          <li>Keributan akibat minuman keras dan rawan pencurian</li><li>Kenakalan remaja masih tinggi</li><li>Pembinaan keagamaan dan kemasyarakatan belum berkelanjutan</li><li>Fasilitas olahraga dan kesenian belum memadai</li><li>PKK dan dasawisma kurang aktif</li><li>Belum terbentuk lembaga adat</li></ul></details>
+        <details><summary><span>Pemberdayaan masyarakat<small>BUMDes, teknologi, pelatihan</small></span></summary><ul>
+          <li>Pengelolaan ekonomi desa (BUMDes) belum maksimal</li><li>Rendahnya penerapan teknologi tepat guna</li><li>Kapasitas kepala desa, perangkat, dan BPD perlu pelatihan dan studi banding</li><li>Keterampilan kelompok usaha, perempuan, tani, pemuda, pengrajin, dan warga miskin perlu ditingkatkan</li></ul></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- GALERI -->
+<div class="view" data-view="galeri" data-title="Galeri" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a></span><h1>Galeri Desa</h1><p>Kegiatan pemerintah desa dan sudut-sudut Desa Tanammawang.</p></div></section>
+  <section class="band">
+    <div class="wrap"><div class="gal" id="gal"></div></div>
+  </section>
+</div>
+
+<!-- LAYANAN -->
+<div class="view" data-view="layanan" data-title="Layanan" hidden>
+  <section class="pagehead"><div class="wrap"><span class="crumb"><a href="#beranda">Beranda</a></span><h1>Layanan Desa</h1><p>Warga dapat mengurus keperluan administrasi langsung di Kantor Desa Tanammawang pada jam kerja.</p></div></section>
+  <section class="band alt">
+    <div class="wrap">
+      <div class="svc">
+        <div><h3>Surat keterangan</h3><p>Domisili, usaha, tidak mampu, kelakuan baik, dan keterangan lainnya.</p></div>
+        <div><h3>Kependudukan</h3><p>Pengantar KTP, Kartu Keluarga, akta kelahiran, dan surat pindah.</p></div>
+        <div><h3>Pengaduan warga</h3><p>Sampaikan keluhan atau usulan pembangunan melalui kepala dusun atau langsung ke kantor desa.</p></div>
+        <div><h3>Informasi publik</h3><p>APBDes, RKP Desa, dan RPJMDes terbuka untuk diketahui warga.</p></div>
+      </div>
+      <div class="contact">
+        <img src="img/kantor.jpg" alt="Kantor Desa Tanammawang" loading="lazy">
+        <div class="prose">
+          <h3>Kantor Desa Tanammawang</h3>
+          <p>Kecamatan Bontoramba, Kabupaten Jeneponto<br>Provinsi Sulawesi Selatan</p>
+          <p class="note">Nomor telepon, email, dan jam pelayanan resmi kantor desa akan dilengkapi di sini.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:grid;gap:.9rem">
+      <div class="logos"><img src="img/logo-jeneponto.png" alt="Logo Kabupaten Jeneponto"><img src="img/logo-kemendesa.png" alt="Logo Kementerian Desa PDTT"></div>
+      <b>Pemerintah Desa Tanammawang</b>
+      <span>Kecamatan Bontoramba, Kabupaten Jeneponto, Sulawesi Selatan</span>
+    </div>
+    <nav aria-label="Tautan footer">
+      <a href="#sejarah">Sejarah desa</a><a href="#data">Data desa</a>
+      <a href="#lembaga-bpd">Lembaga desa</a><a href="#visi">Visi &amp; misi</a>
+      <a href="#rpjmdes">RPJMDes</a><a href="#galeri">Galeri</a>
+    </nav>
+    <div class="copy">© 2026 Pemerintah Desa Tanammawang. Data bersumber dari Profil dan RPJMDes Desa Tanammawang 2022–2027.</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto diperbesar">
+  <button class="x" id="lbClose">Tutup</button>
+  <figure style="margin:0;text-align:center"><img id="lbImg" alt=""><p id="lbCap"></p></figure>
+</div>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+/* ===== Pengaturan repository GitHub (otomatis dari alamat situs) ===== */
+const REPO = (() => {
+  const h = location.hostname;
+  if (h.endsWith('.github.io')) {
+    const owner = h.split('.')[0];
+    const first = location.pathname.split('/').filter(Boolean)[0];
+    return { owner, repo: first && !first.includes('.') ? first : h };
+  }
+  return { owner: 'baularidwan-png', repo: 'desa-tanammawang' };
+})();
+const API = `https://api.github.com/repos/${REPO.owner}/${REPO.repo}`;
+const DEFAULT_GALERI = [
+  {id:'g1',src:'img/gerbang.jpg',caption:'Gerbang badik Selamat Datang di Desa Tanammawang'},
+  {id:'g2',src:'img/musyawarah.jpg',caption:'Kegiatan bersama di balai desa'},
+  {id:'g3',src:'img/irigasi.jpg',caption:'Peninjauan pompa air untuk pengairan sawah'},
+  {id:'g4',src:'img/silaturahmi.jpg',caption:'Silaturahmi bersama Babinsa dan Bhabinkamtibmas'},
+  {id:'g5',src:'img/kantor.jpg',caption:'Kantor desa'},
+  {id:'g6',src:'img/gerbang2.jpg',caption:'Gerbang desa dari arah dalam'}
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const fmt = n => n.toLocaleString('id-ID');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ===== Menu & navigasi halaman ===== */
+const nav = $('#nav'), menuBtn = $('#menuBtn');
+menuBtn.addEventListener('click', () => { const o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
+$$('.dd-btn').forEach(b => b.addEventListener('click', e => {
+  e.stopPropagation();
+  const dd = b.parentElement, open = !dd.classList.contains('open');
+  $$('.dd').forEach(x => { x.classList.remove('open'); x.querySelector('.dd-btn').setAttribute('aria-expanded', 'false'); });
+  if (open) { dd.classList.add('open'); b.setAttribute('aria-expanded', 'true'); }
+}));
+document.addEventListener('click', e => { if (!e.target.closest('.dd')) $$('.dd').forEach(x => x.classList.remove('open')); });
+nav.addEventListener('click', e => { if (e.target.closest('a')) { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); $$('.dd').forEach(x => x.classList.remove('open')); } });
+
+function route() {
+  let id = location.hash.slice(1) || 'beranda';
+  let viewId = id.startsWith('lembaga') ? 'lembaga' : id;
+  let view = document.querySelector(`[data-view="${viewId}"]`);
+  if (!view) { id = viewId = 'beranda'; view = document.querySelector('[data-view="beranda"]'); }
+  $$('.view').forEach(v => v.hidden = v !== view);
+  if (viewId === 'lembaga') {
+    const sub = $(`.lpanel[data-sub="${id}"]`) ? id : 'lembaga-pemdes';
+    $$('.lpanel').forEach(p => p.hidden = p.dataset.sub !== sub);
+    $$('.subnav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + sub));
+    $('#lemTitle').textContent = $(`.lpanel[data-sub="${sub}"]`).dataset.name;
+    id = sub;
+  }
+  const group = view.dataset.group;
+  $$('.nav>a').forEach(a => a.classList.toggle('active', a.dataset.nav === viewId));
+  $$('.dd').forEach(d => d.classList.toggle('active', d.dataset.group === group));
+  $$('.dd-menu a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  document.title = (viewId === 'beranda' ? '' : (view.dataset.title || '') + ' · ') + 'Desa Tanammawang';
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+
+/* ===== Data SDGs 2020 ===== */
+const tabs = $$('[role=tab]');
+tabs.forEach(t => t.addEventListener('click', () => tabs.forEach(x => { x.setAttribute('aria-selected', x === t); $('#' + x.getAttribute('aria-controls')).hidden = x !== t; })));
+const dusun = [['Kawari I',105,178,198],['Kawari II',120,190,204],['Tangkulu',136,198,207],['Tanammawang',127,189,210],['Sarroanging I',99,162,168],['Sarroanging II',123,188,208]];
+const maxJ = Math.max(...dusun.map(d => d[2] + d[3]));
+$('#dusunBody').innerHTML = dusun.map(([n,kk,l,p]) => `<tr><td>${n}</td><td class="r">${kk}</td><td class="r">${l}</td><td class="r">${p}</td><td class="r"><b>${l+p}</b></td><td><span class="bar" style="width:${(l+p)/maxJ*100}%"></span></td></tr>`).join('');
+const usia = [['> 50',139,144],['45–50',76,101],['36–45',145,179],['25–35',203,194],['18–25',144,182],['15–18',71,71],['12–15',69,69],['6–12',132,107],['4–6',59,60],['1–4',54,63],['0–1',16,22]];
+const maxU = Math.max(...usia.flatMap(r => [r[1], r[2]]));
+$('#pyr').innerHTML = usia.map(([a,l,p]) => `<div class="row"><div class="l"><span>${l}</span><span class="bl" style="width:${l/maxU*80}%"></span></div><div class="age">${a}</div><div class="p"><span class="bp" style="width:${p/maxU*80}%"></span><span>${p}</span></div></div>`).join('');
+function hbars(id, rows, cls = '', unit = '') {
+  const m = Math.max(...rows.map(r => r[1]));
+  $('#' + id).innerHTML = rows.map(([k,v]) => `<div class="row"><span>${k}</span><span class="track"><span class="bar ${cls}" style="width:${v/m*100}%"></span></span><b>${fmt(v)}${unit}</b></div>`).join('');
+}
+hbars('didik', [['Tamat SD',599],['Tamat SMP',223],['Tamat SMA',384],['Diploma II',6],['Diploma III',4],['Sarjana (S1)',47],['Magister (S2)',7]]);
+hbars('kerja', [['Petani / penggarap',397],['Petani & pedagang',48],['Pedagang & petani',43],['Tukang becak / buruh',33],['Sopir & petani',30],['Buruh tani / bangunan',30],['Honorer & petani',22],['Jualan',21],['Petani & buruh bangunan',21],['PNS / petani / pedagang',20],['Tukang kayu & petani',14],['Petani & tukang ojek',11],['Petani & kusir',10],['Tukang jahit',4],['Petani & veteran',4],['Petani & pandai besi',2]], 'b');
+hbars('lahan', [['Sawah tadah hujan',750],['Ladang / tegalan',400],['Permukiman',85],['Sawah irigasi',75],['Pekuburan',2]], 'g', ' Ha');
+const sej = [['Kawari I',14,72,19],['Kawari II',18,80,22],['Tangkulu',28,84,24],['Tanammawang',19,93,15],['Sarroanging I',11,78,12],['Sarroanging II',15,95,13]];
+const tot = [1,2,3].map(i => sej.reduce((s,r) => s + r[i], 0));
+const all = tot.reduce((a,b) => a + b, 0);
+$('#sejSum').innerHTML = [['Keluarga kaya',tot[0]],['Keluarga sedang',tot[1]],['Keluarga miskin',tot[2]]].map(([k,v]) => `<div><small>${k}</small><b>${v}</b> <small style="display:inline">KK · ${Math.round(v/all*100)}%</small></div>`).join('');
+$('#sejBody').innerHTML = sej.map(([n,a,b,c]) => `<tr><td>${n}</td><td class="r">${a}</td><td class="r">${b}</td><td class="r">${c}</td><td class="r"><b>${a+b+c}</b></td></tr>`).join('') + `<tr><td><b>Jumlah</b></td><td class="r"><b>${tot[0]}</b></td><td class="r"><b>${tot[1]}</b></td><td class="r"><b>${tot[2]}</b></td><td class="r"><b>${all}</b></td></tr>`;
+
+/* ===== Galeri ===== */
+let galeri = DEFAULT_GALERI.slice();
+function renderGaleri() {
+  const item = (g, i) => `<figure class="gitem"><button class="gopen" data-i="${i}" aria-label="Perbesar foto"><img src="${esc(g.src)}" alt="${esc(g.caption)}" loading="lazy"></button><figcaption>${esc(g.caption)}</figcaption><div class="gtools"><button class="e" data-edit="${i}">Edit</button><button class="d" data-del="${i}">Hapus</button></div></figure>`;
+  const add = `<button class="gadd" data-add="1"><span>+</span>Tambah foto</button>`;
+  $('#gal').innerHTML = add + (galeri.length ? galeri.map(item).join('') : '<p class="empty">Belum ada foto di galeri.</p>');
+  $('#galPreview').innerHTML = galeri.slice(0, 3).map(item).join('') || '<p class="empty">Belum ada foto di galeri.</p>';
+}
+async function loadGaleri() {
+  try {
+    const r = await fetch('data/galeri.json?t=' + Date.now(), { cache: 'no-store' });
+    if (r.ok) { const d = await r.json(); if (Array.isArray(d)) galeri = d; }
+  } catch (e) { /* pakai data bawaan */ }
+  renderGaleri();
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('.gopen');
+  if (o) { const g = galeri[+o.dataset.i]; $('#lbImg').src = g.src; $('#lbImg').alt = g.caption; $('#lbCap').textContent = g.caption; $('#lb').hidden = false; $('#lbClose').focus(); return; }
+  const ed = e.target.closest('[data-edit]'); if (ed) return photoForm(+ed.dataset.edit);
+  const de = e.target.closest('[data-del]'); if (de) return confirmDelete(+de.dataset.del);
+  if (e.target.closest('[data-add]')) return photoForm(null);
+});
+const closeLb = () => $('#lb').hidden = true;
+$('#lbClose').addEventListener('click', closeLb);
+$('#lb').addEventListener('click', e => { if (e.target.id === 'lb') closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
+
+/* ===== Modal & toast ===== */
+const modal = $('#modal'), mbox = $('#mbox');
+function openModal(html) { mbox.innerHTML = html; modal.hidden = false; const f = mbox.querySelector('input,button'); if (f) f.focus(); }
+function closeModal() { modal.hidden = true; mbox.innerHTML = ''; }
+modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) closeModal(); });
+let toastT;
+function toast(t, ms = 4500) { const el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => el.hidden = true, ms); }
+function setMsg(t, err) { const m = mbox.querySelector('.msg'); if (!m) return; m.hidden = !t; m.textContent = t || ''; m.classList.toggle('err', !!err); }
+function busy(on) { mbox.querySelectorAll('button,input').forEach(b => b.disabled = on); }
+
+/* ===== GitHub API ===== */
+let TOKEN = null;
+try { TOKEN = sessionStorage.getItem('tm_admin_token'); } catch (e) {}
+const b64enc = bytes => { let s = ''; for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000)); return btoa(s); };
+const b64dec = s => Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0));
+const utf8b64 = str => b64enc(new TextEncoder().encode(str));
+async function gh(path, opts = {}, token = TOKEN) {
+  const r = await fetch(API + path, { ...opts, headers: { Accept: 'application/vnd.github+json', ...(token ? { Authorization: 'Bearer ' + token } : {}), ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+  if (r.status === 404 && opts.allow404) return null;
+  if (!r.ok) {
+    let m = ''; try { m = (await r.json()).message; } catch (e) {}
+    if (r.status === 401) throw new Error('Token tidak valid atau sudah kedaluwarsa. Atur ulang akun admin.');
+    if (r.status === 403) throw new Error('Token tidak punya izin menulis ke repository ini.');
+    throw new Error('GitHub menolak permintaan (' + r.status + '). ' + m);
+  }
+  return r.status === 204 ? {} : r.json();
+}
+const getFile = p => gh('/contents/' + p, { allow404: true });
+const putFile = (p, content, message, sha) => gh('/contents/' + p, { method: 'PUT', body: JSON.stringify({ message, content, ...(sha ? { sha } : {}) }) });
+const delFile = (p, sha, message) => gh('/contents/' + p, { method: 'DELETE', body: JSON.stringify({ message, sha }) });
+
+async function fetchGaleriFresh() {
+  const f = await getFile('data/galeri.json');
+  if (f) { galeri = JSON.parse(new TextDecoder().decode(b64dec(f.content))); renderGaleri(); }
+}
+async function saveGaleri(message) {
+  const f = await getFile('data/galeri.json');
+  await putFile('data/galeri.json', utf8b64(JSON.stringify(galeri, null, 2) + '\n'), message, f && f.sha);
+}
+
+/* ===== Enkripsi token dengan kata sandi admin ===== */
+async function deriveKey(pw, salt) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 310000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+}
+async function encryptToken(token, pw) {
+  const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await deriveKey(pw, salt), new TextEncoder().encode(token)));
+  return { v: 1, salt: b64enc(salt), iv: b64enc(iv), ct: b64enc(ct) };
+}
+async function decryptToken(o, pw) {
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64dec(o.iv) }, await deriveKey(pw, b64dec(o.salt)), b64dec(o.ct));
+  return new TextDecoder().decode(pt);
+}
+async function checkToken(token) {
+  const repo = await gh('', {}, token);
+  if (!repo.permissions || !repo.permissions.push) throw new Error('Token ini tidak punya izin menulis (Contents: Read and write).');
+}
+async function loadAdminConfig() {
+  try { const r = await fetch('data/admin.json?t=' + Date.now(), { cache: 'no-store' }); if (r.ok) return await r.json(); } catch (e) {}
+  try { const f = await gh('/contents/data/admin.json', { allow404: true }, null); if (f) return JSON.parse(new TextDecoder().decode(b64dec(f.content))); } catch (e) {}
+  return null;
+}
+
+/* ===== Login admin ===== */
+function setAdmin(on) {
+  document.body.classList.toggle('is-admin', on);
+  $('#adminbar').hidden = !on;
+  $('#adminBtn').innerHTML = on ? 'Admin ✓' : '<span class="lbl-long">Login </span>Admin';
+}
+$('#adminBtn').addEventListener('click', () => TOKEN ? toast('Anda sudah masuk sebagai admin. Klik "Keluar" pada pita kuning untuk keluar.') : loginForm());
+$('#logoutBtn').addEventListener('click', () => { TOKEN = null; try { sessionStorage.removeItem('tm_admin_token'); } catch (e) {} setAdmin(false); toast('Anda sudah keluar dari mode admin.'); });
+
+function loginForm() {
+  openModal(`<h3>Login Admin</h3>
+    <p>Masuk untuk menambah, mengedit, dan menghapus foto galeri.</p>
+    <form id="fLogin" style="display:grid;gap:1rem">
+      <div class="field"><label for="lgPass">Kata sandi admin</label><input id="lgPass" type="password" autocomplete="current-password" required></div>
+      <div class="msg" hidden></div>
+      <div class="mact"><button type="button" class="btn" data-close>Batal</button><button class="btn primary">Masuk</button></div>
+    </form>
+    <p>Belum punya akun admin, atau lupa kata sandi? <button type="button" class="linkbtn" id="toSetup">Atur akun admin</button></p>`);
+  $('#toSetup').addEventListener('click', setupForm);
+  $('#fLogin').addEventListener('submit', async e => {
+    e.preventDefault(); busy(true); setMsg('Memeriksa…');
+    try {
+      const cfg = await loadAdminConfig();
+      if (!cfg) throw new Error('Akun admin belum diatur. Klik "Atur akun admin" di bawah.');
+      let tok;
+      try { tok = await decryptToken(cfg, $('#lgPass').value); } catch (x) { throw new Error('Kata sandi salah.'); }
+      await checkToken(tok);
+      TOKEN = tok; try { sessionStorage.setItem('tm_admin_token', tok); } catch (x) {}
+      setAdmin(true); closeModal(); toast('Login berhasil. Tombol Edit dan Hapus sekarang muncul di galeri.');
+      fetchGaleriFresh().catch(() => {});
+      if (!location.hash.startsWith('#galeri')) location.hash = 'galeri';
+    } catch (x) { setMsg(netMsg(x), true); busy(false); }
+  });
+}
+function setupForm() {
+  openModal(`<h3>Atur akun admin</h3>
+    <p>Dilakukan sekali saja. Siapkan <b>token GitHub</b> pemilik repository:</p>
+    <ol>
+      <li>GitHub → foto profil → <b>Settings</b> → <b>Developer settings</b></li>
+      <li><b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b></li>
+      <li>Repository access: <b>Only select repositories</b> → <b>${esc(REPO.repo)}</b></li>
+      <li>Permissions → Repository → <b>Contents: Read and write</b></li>
+      <li>Klik Generate, lalu salin tokennya</li>
+    </ol>
+    <form id="fSetup" style="display:grid;gap:1rem">
+      <div class="field"><label for="stTok">Token GitHub</label><input id="stTok" type="password" autocomplete="off" required placeholder="github_pat_…"></div>
+      <div class="field"><label for="stPass">Kata sandi admin baru</label><input id="stPass" type="password" autocomplete="new-password" minlength="10" required><small>Minimal 10 karakter. Gunakan gabungan huruf, angka, dan simbol.</small></div>
+      <div class="field"><label for="stPass2">Ulangi kata sandi</label><input id="stPass2" type="password" autocomplete="new-password" required></div>
+      <div class="msg" hidden></div>
+      <div class="mact"><button type="button" class="btn" data-close>Batal</button><button class="btn primary">Simpan &amp; masuk</button></div>
+    </form>`);
+  $('#fSetup').addEventListener('submit', async e => {
+    e.preventDefault();
+    const tok = $('#stTok').value.trim(), pw = $('#stPass').value;
+    if (pw !== $('#stPass2').value) return setMsg('Kata sandi dan ulangannya tidak sama.', true);
+    busy(true); setMsg('Memeriksa token…');
+    try {
+      await checkToken(tok);
+      TOKEN = tok;
+      setMsg('Menyimpan akun admin…');
+      const enc = await encryptToken(tok, pw);
+      const f = await getFile('data/admin.json');
+      await putFile('data/admin.json', utf8b64(JSON.stringify(enc) + '\n'), 'Atur akun admin', f && f.sha);
+      try { sessionStorage.setItem('tm_admin_token', tok); } catch (x) {}
+      setAdmin(true); closeModal(); toast('Akun admin tersimpan dan Anda sudah masuk. Berikutnya cukup login dengan kata sandi.');
+      fetchGaleriFresh().catch(() => {});
+      location.hash = 'galeri';
+    } catch (x) { TOKEN = null; setMsg(netMsg(x), true); busy(false); }
+  });
+}
+function netMsg(x) {
+  if (x instanceof TypeError) return 'Tidak bisa terhubung ke GitHub. Pastikan internet aktif dan Anda membuka situs di alamat github.io.';
+  return x.message || String(x);
+}
+
+/* ===== Tambah / edit / hapus foto ===== */
+function resizeImage(file, max = 1600, q = 0.82) {
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      c.toBlob(b => b ? res(b) : rej(new Error('Foto gagal diproses.')), 'image/jpeg', q);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('File ini bukan gambar yang bisa dibaca. Pilih file JPG atau PNG.')); };
+    img.src = url;
+  });
+}
+async function blobB64(b) { return b64enc(new Uint8Array(await b.arrayBuffer())); }
+const ownFile = src => src.startsWith('img/galeri/');
+
+function photoForm(i) {
+  if (!TOKEN) return loginForm();
+  const g = i === null ? null : galeri[i];
+  openModal(`<h3>${g ? 'Edit foto' : 'Tambah foto'}</h3>
+    <form id="fPhoto" style="display:grid;gap:1rem">
+      <img class="prev" id="pPrev" ${g ? `src="${esc(g.src)}"` : 'hidden'} alt="Pratinjau foto">
+      <div class="field"><label for="pFile">${g ? 'Ganti foto (opsional)' : 'Pilih foto'}</label><input id="pFile" type="file" accept="image/*" ${g ? '' : 'required'}><small>Foto otomatis diperkecil agar web tetap ringan.</small></div>
+      <div class="field"><label for="pCap">Keterangan foto</label><input id="pCap" type="text" maxlength="140" required value="${g ? esc(g.caption) : ''}" placeholder="Contoh: Musyawarah desa di balai desa"></div>
+      <div class="msg" hidden></div>
+      <div class="mact"><button type="button" class="btn" data-close>Batal</button><button class="btn primary">${g ? 'Simpan perubahan' : 'Unggah foto'}</button></div>
+    </form>`);
+  $('#pFile').addEventListener('change', e => { const f = e.target.files[0]; if (f) { const p = $('#pPrev'); p.src = URL.createObjectURL(f); p.hidden = false; } });
+  $('#fPhoto').addEventListener('submit', async e => {
+    e.preventDefault(); busy(true);
+    try {
+      const file = $('#pFile').files[0], caption = $('#pCap').value.trim();
+      let src = g ? g.src : null;
+      if (file) {
+        setMsg('Memproses foto…');
+        const blob = await resizeImage(file);
+        const path = 'img/galeri/' + Date.now() + '.jpg';
+        setMsg('Mengunggah foto…');
+        await putFile(path, await blobB64(blob), (g ? 'Ganti foto: ' : 'Tambah foto: ') + caption);
+        if (g && ownFile(g.src)) { const old = await getFile(g.src); if (old) await delFile(g.src, old.sha, 'Hapus foto lama'); }
+        src = path;
+      }
+      setMsg('Menyimpan galeri…');
+      await fetchGaleriFresh().catch(() => {});
+      if (g) { const k = galeri.findIndex(x => x.id === g.id); if (k > -1) galeri[k] = { ...galeri[k], src, caption }; }
+      else galeri.unshift({ id: 'g' + Date.now(), src, caption });
+      await saveGaleri((g ? 'Edit galeri: ' : 'Tambah galeri: ') + caption);
+      renderGaleri(); closeModal();
+      toast('Tersimpan. Pengunjung akan melihat perubahan ini dalam 1–2 menit.');
+    } catch (x) { setMsg(netMsg(x), true); busy(false); }
+  });
+}
+function confirmDelete(i) {
+  if (!TOKEN) return loginForm();
+  const g = galeri[i];
+  openModal(`<h3>Hapus foto ini?</h3>
+    <img class="prev" src="${esc(g.src)}" alt="">
+    <p>"${esc(g.caption)}" akan dihapus dari galeri. Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="msg" hidden></div>
+    <div class="mact"><button class="btn" data-close>Batal</button><button class="btn danger" id="doDel">Ya, hapus</button></div>`);
+  $('#doDel').addEventListener('click', async () => {
+    busy(true); setMsg('Menghapus…');
+    try {
+      await fetchGaleriFresh().catch(() => {});
+      galeri = galeri.filter(x => x.id !== g.id);
+      await saveGaleri('Hapus galeri: ' + g.caption);
+      if (ownFile(g.src)) { const f = await getFile(g.src); if (f) await delFile(g.src, f.sha, 'Hapus file foto'); }
+      renderGaleri(); closeModal();
+      toast('Foto dihapus. Pengunjung akan melihat perubahan ini dalam 1–2 menit.');
+    } catch (x) { setMsg(netMsg(x), true); busy(false); }
+  });
+}
+
+/* ===== Mulai ===== */
+route();
+renderGaleri();
+loadGaleri();
+if (TOKEN) { setAdmin(true); fetchGaleriFresh().catch(() => {}); }
+</script>
+</body>
+</html>
